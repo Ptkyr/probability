@@ -16,10 +16,10 @@ pub struct Bernoulli {
 impl Bernoulli {
     /// Create a Bernoulli distribution with success probability `p`.
     ///
-    /// It should hold that `p > 0` and `p < 1`.
+    /// It should hold that `p >= 0` and `p <= 1`.
     #[inline]
     pub fn new(p: f64) -> Self {
-        should!(p > 0.0 && p < 1.0);
+        should!(p >= 0.0 && p <= 1.0);
         Bernoulli {
             p,
             q: 1.0 - p,
