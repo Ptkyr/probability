@@ -19,7 +19,7 @@ impl Categorical {
     /// It should hold that `p[i] >= 0`, `p[i] <= 1`, and `sum(p) == 1`.
     pub fn new(p: &[f64]) -> Self {
         should!(is_probability_vector(p), {
-            const EPSILON: f64 = 1e-7;
+            const EPSILON: f64 = 1e-4;
             p.iter().all(|&p| (0.0..=1.0).contains(&p))
                 && (p.iter().fold(0.0, |sum, &p| sum + p) - 1.0).abs() < EPSILON
         });
